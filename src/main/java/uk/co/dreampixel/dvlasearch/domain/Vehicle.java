@@ -8,9 +8,11 @@ public class Vehicle {
     private String make;
     private String model;
     private String vin;
-    private String dateOfFirstRegistration;
+    private Boolean taxed;
+    private Boolean mot;
 
 // commented out to demonstrate change
+//    private String dateOfFirstRegistration;
 //    private String yearOfManufacture;
 //    private String cylinderCapacity;
 //    private String co2Emissions;
@@ -22,8 +24,6 @@ public class Vehicle {
 //    private String revenueWeight;
 //    private String taxDetails;
 //    private String motDetails;
-//    private Boolean taxed;
-//    private Boolean mot;
 //    private String transmission;
 //    private String numberOfDoors;
 //    private String sixMonthRate;
