@@ -1,36 +1,50 @@
 buildscript {
      ext {
-          springBootVersion = '1.4.1.RELEASE'
+         springBootVersion = '1.4.1.RELEASE'
      }
      repositories {
-          mavenCentral()
+         mavenCentral()
      }
      dependencies {
-          classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+         classpath('se.transmode.gradle:gradle-docker:1.2')
      }
 }
 
+group = 'teastar'
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'docker'
 
 jar {
-     baseName = 'dvlasearch'
-     version = '1.0.0-SNAPSHOT'
+    baseName = 'dvlasearch'
+    version = '1.0.0-SNAPSHOT'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-     mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-     compile 'org.springframework.boot:spring-boot-starter-web'
-
+    compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.projectlombok:lombok:1.16.10'
-    compile 'io.github.openfeign:feign-core:9.0.0'
-    compile 'io.github.openfeign:feign-gson:9.0.0'
 
-     testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+task buildDocker(type: Docker, dependsOn: build) {
+    push = true
+    applicationName = jar.baseName
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
 }
