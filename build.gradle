@@ -37,6 +37,13 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
+// Creates a Zip containing application jar and docker files
+// to enable AWS Elastic Beanstalk to create and deploy a docker image.
+task awsDockerZip(type: Zip) {
+    from 'src/main/docker'
+    from jar.outputs.files
+}
+
 task buildDocker(type: Docker, dependsOn: build) {
     push = true
     applicationName = jar.baseName
