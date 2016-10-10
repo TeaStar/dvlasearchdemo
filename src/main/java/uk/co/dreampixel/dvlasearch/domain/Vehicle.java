@@ -10,12 +10,12 @@ public class Vehicle {
     private String vin;
     private Boolean taxed;
     private Boolean mot;
+    private String co2Emissions;
 
 // commented out to demonstrate change
 //    private String dateOfFirstRegistration;
 //    private String yearOfManufacture;
 //    private String cylinderCapacity;
-//    private String co2Emissions;
 //    private String fuelType;
 //    private String taxStatus;
 //    private String colour;
