@@ -10,10 +10,10 @@ public class Vehicle {
     private String vin;
     private Boolean taxed;
     private Boolean mot;
-    private String fuelType;
 
 // commented out to demonstrate change
-//  private String co2Emissions;
+//    private String fuelType;
+//    private String co2Emissions;
 //    private String dateOfFirstRegistration;
 //    private String yearOfManufacture;
 //    private String cylinderCapacity;
@@ -28,5 +28,4 @@ public class Vehicle {
 //    private String numberOfDoors;
 //    private String sixMonthRate;
 //    private String twelveMonthRate;
-
 }
