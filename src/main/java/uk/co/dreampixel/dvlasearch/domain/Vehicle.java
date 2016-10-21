@@ -11,6 +11,7 @@ public class Vehicle {
     private Boolean taxed;
     private Boolean mot;
      private String dateOfFirstRegistration;
+    private String co2Emissions;
 
 // commented out to demonstrate change
 //    private String fuelType;
