@@ -8,3 +8,5 @@ DVLA Search api uses live data but is restricted to licence plates starting with
 
 Refer to DVLA Search API for more information:
 http://dvlasearch.co.uk/api-documentation/
+
+This Demo was used to demonstrate a continuous delivery pipeline using AWS CodePipeline, Jenkins in EC2 instances and AWS ElasticBeanStalk.
