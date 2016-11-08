@@ -9,7 +9,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import uk.co.dreampixel.dvlasearch.domain.Vehicle;
 
-@Component public class DvlaSearch {
+@Component
+public class DvlaSearch {
 
     private static final String LICENCE_PLATE = "licencePlate";
     private static final String API_KEY = "apikey";
@@ -22,7 +23,8 @@ import uk.co.dreampixel.dvlasearch.domain.Vehicle;
     @Value("${dvla.search.api.key}")
     private String dvlaApiKey;
 
-    @Autowired public DvlaSearch(RestTemplate restTemplate) {
+    @Autowired
+    public DvlaSearch(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
