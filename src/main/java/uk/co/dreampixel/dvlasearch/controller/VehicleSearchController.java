@@ -13,7 +13,8 @@ public class VehicleSearchController {
 
     private final DvlaSearch dvlaSearch;
 
-    @Autowired public VehicleSearchController(DvlaSearch dvlaSearch) {
+    @Autowired 
+    public VehicleSearchController(DvlaSearch dvlaSearch) {
         this.dvlaSearch = dvlaSearch;
     }
 
