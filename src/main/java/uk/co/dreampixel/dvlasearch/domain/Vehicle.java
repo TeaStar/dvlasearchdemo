@@ -10,7 +10,7 @@ public class Vehicle {
     private String vin;
     private Boolean taxed;
     private Boolean mot;
-     private String dateOfFirstRegistration;
+    private String dateOfFirstRegistration;
     private String co2Emissions;
 
 // commented out to demonstrate change

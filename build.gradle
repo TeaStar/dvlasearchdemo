@@ -14,7 +14,6 @@ buildscript {
 group = 'teastar'
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'docker'
@@ -35,6 +34,8 @@ dependencies {
     compile 'org.projectlombok:lombok:1.16.10'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.mockito:mockito-core:2.7.11'
+    testCompile 'commons-io:commons-io:2.5'
 }
 
 // Copies docker files to enable AWS Elastic Beanstalk

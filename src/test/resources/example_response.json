@@ -1,0 +1,23 @@
+{
+  "make": "VOLKSWAGEN",
+  "dateOfFirstRegistration": "23 July 2009",
+  "yearOfManufacture": "2009",
+  "cylinderCapacity": "1968 cc",
+  "co2Emissions": "167",
+  "fuelType": "DIESEL",
+  "taxStatus": "Tax not due",
+  "colour": "SILVER",
+  "typeApproval": "M1",
+  "wheelPlan": "2 AXLE RIGID BODY",
+  "revenueWeight": "Not available",
+  "taxDetails": "Tax due: 01 April 2017",
+  "motDetails": "Expires: 28 April 2017",
+  "taxed": true,
+  "mot": true,
+  "vin": "WVGZZZ5NZAW007903",
+  "model": "TIGUAN SE TDI 4MOTION 140",
+  "transmission": "MANUAL",
+  "numberOfDoors": "5",
+  "sixMonthRate": "",
+  "twelveMonthRate": ""
+}
