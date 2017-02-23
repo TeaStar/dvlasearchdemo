@@ -1,0 +1,4 @@
+
+dvla.search.endpoint=https://dvlasearch.appspot.com/DvlaSearch
+dvla.search.api.key=DvlaSearchDemoAccount
+server.port=8686
