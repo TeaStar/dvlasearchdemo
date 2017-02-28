@@ -1,0 +1,29 @@
+spring:
+  profiles.active: development
+  application:
+      name: dvla-search
+  jackson:
+      serialization:
+          indent_output: true
+dvla:
+  search:
+    endpoint: https://dvlasearch.appspot.com/DvlaSearch
+---
+spring:
+    profiles: production
+server:
+    port: 8080
+dvla:
+  search:
+    api:
+      key:
+---
+spring:
+    profiles: development
+server:
+    port: 8686
+dvla:
+  search:
+    api:
+      key: DvlaSearchDemoAccount
+

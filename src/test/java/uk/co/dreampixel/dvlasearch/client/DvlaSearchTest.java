@@ -45,7 +45,7 @@ public class DvlaSearchTest {
         File file = FileUtils.getFile("src", "test", "resources", "example_response.json");
         String responseExample = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
 
-        String requestURI = String.format("?licencePlate=%s&apikey=%s", LICENCE_PLATE, API_KEY);
+        String requestURI = String.format(ENDPOINT + "?licencePlate=%s&apikey=%s", LICENCE_PLATE, API_KEY);
 
         mockServer.expect(requestTo(requestURI))
                   .andExpect(method(HttpMethod.GET))
@@ -53,7 +53,7 @@ public class DvlaSearchTest {
                   );
 
         // when
-        Vehicle vehicle = restTemplate.getForObject("?licencePlate={licencePlate}&apikey={apikey}", Vehicle.class, LICENCE_PLATE, API_KEY);
+        Vehicle vehicle = dvlaSearch.searchVehicle(LICENCE_PLATE);
 
         // then
         mockServer.verify();

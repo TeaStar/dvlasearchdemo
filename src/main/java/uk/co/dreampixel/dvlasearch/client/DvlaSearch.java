@@ -31,6 +31,11 @@ public class DvlaSearch {
     }
 
     public Vehicle searchVehicle(String licencePlate) {
+
+        // Find bugs example
+        String findBugsString = "findbugs";
+        findBugsString.replace('f', 'k');
+
         URI endpointUri = createEndpointUri(licencePlate);
         log.info("**** Endpoint: " + endpointUri + " ****");
 
