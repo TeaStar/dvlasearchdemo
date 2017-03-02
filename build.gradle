@@ -18,8 +18,12 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'docker'
-//apply plugin: 'findbugs'
+apply plugin: 'findbugs'
 //apply plugin: 'org.owasp.dependencycheck'
+
+findbugs {
+    ignoreFailures = true
+}
 
 jar {
     baseName = 'dvlasearch'

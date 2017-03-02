@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:slim
+FROM openjdk
 VOLUME /tmp
 ADD dvlasearch-1.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
