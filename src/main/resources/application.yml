@@ -1,5 +1,5 @@
 spring:
-  profiles.active: development
+  profiles.active: production
   application:
       name: dvla-search
   jackson:
@@ -8,15 +8,19 @@ spring:
 dvla:
   search:
     endpoint: https://dvlasearch.appspot.com/DvlaSearch
+    proxy:
+      enabled: false
+      host:
+      port:
+      user:
+      pass:
+    api:
+      key: DvlaSearchDemoAccount
 ---
 spring:
     profiles: production
 server:
     port: 8080
-dvla:
-  search:
-    api:
-      key:
 ---
 spring:
     profiles: development
@@ -25,10 +29,8 @@ server:
 dvla:
   search:
     proxy:
+      enabled: true
       host:
-      port: 8080
+      port:
       user:
       pass:
-    api:
-      key: DvlaSearchDemoAccount
-

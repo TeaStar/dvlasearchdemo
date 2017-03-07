@@ -21,11 +21,14 @@ import java.net.Proxy;
 @Configuration
 public class DvlaSearchConfiguration {
 
+    @Value("${dvla.search.proxy.enabled}")
+    private boolean proxyEnabled;
+
     @Value("${dvla.search.proxy.host}")
     private String proxyServer;
 
     @Value("${dvla.search.proxy.port}")
-    private int proxyPort;
+    private Integer proxyPort;
 
     @Value("${dvla.search.proxy.user}")
     private String proxyUser;
@@ -35,23 +38,29 @@ public class DvlaSearchConfiguration {
 
     @Bean public RestTemplate restTemplate() {
 
-        CredentialsProvider credentialProvider = new BasicCredentialsProvider();
-        credentialProvider.setCredentials(new AuthScope(proxyServer, proxyPort),
-                                          new UsernamePasswordCredentials(proxyUser, proxyPass));
+        RestTemplate restTemplate = new RestTemplate();
 
-        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
+        if (proxyEnabled) {
 
-        httpClientBuilder.useSystemProperties();
-        httpClientBuilder.setProxy(new HttpHost(proxyServer, proxyPort));
-        httpClientBuilder.setDefaultCredentialsProvider(credentialProvider);
-        httpClientBuilder.setProxyAuthenticationStrategy(new ProxyAuthenticationStrategy());
+            CredentialsProvider credentialProvider = new BasicCredentialsProvider();
+            credentialProvider.setCredentials(new AuthScope(proxyServer, proxyPort),
+                                              new UsernamePasswordCredentials(proxyUser, proxyPass));
 
-        CloseableHttpClient client = httpClientBuilder.build();
+            HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
 
-        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-        requestFactory.setHttpClient(client);
+            httpClientBuilder.useSystemProperties();
+            httpClientBuilder.setProxy(new HttpHost(proxyServer, proxyPort));
+            httpClientBuilder.setDefaultCredentialsProvider(credentialProvider);
+            httpClientBuilder.setProxyAuthenticationStrategy(new ProxyAuthenticationStrategy());
 
-        return new RestTemplate(requestFactory);
+            CloseableHttpClient client = httpClientBuilder.build();
+
+            HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+            requestFactory.setHttpClient(client);
+            restTemplate.setRequestFactory(requestFactory);
+        }
+
+        return restTemplate;
     }
 
 }
