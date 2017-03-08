@@ -49,14 +49,12 @@ dependencies {
 // Copies docker file and jar to enable build and publish of image
 // via Jenkins plugin
 task copyDockerfile(type: Copy, dependsOn: build) {
-    doFirst {
-        dependsOn 'jar'
-        from "build/libs/${jar.baseName}-${jar.version}.jar"
-        from 'src/main/docker'
-        into 'build/docker'
-        rename { String fileName ->
-            fileName.replace("-${jar.version}", "")
-        }
+    dependsOn 'jar'
+    from "build/libs/${jar.baseName}-${jar.version}.jar"
+    from 'src/main/docker'
+    into 'build/docker'
+    rename { String fileName ->
+        fileName.replace("-${jar.version}", "")
     }
 }
 
