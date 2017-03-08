@@ -50,14 +50,13 @@ dependencies {
 // via Jenkins plugin
 task copyDockerfile(type: Copy, dependsOn: build) {
     copy {
-        from 'src/main/docker'
-        into 'build/libs'
+        from 'src/main/docker/'
+        into 'build/libs/'
     }
 }
 
-// Builds and publishes a docker image
 task buildDocker(type: Docker, dependsOn: build) {
-    push = true
+    push = false
     applicationName = jar.baseName
     dockerfile = file('src/main/docker/Dockerfile')
     doFirst {
