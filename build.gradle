@@ -52,7 +52,7 @@ task copyDockerfile(type: Copy, dependsOn: build) {
     dependsOn 'jar'
     from "build/libs/${jar.baseName}-${jar.version}.jar"
     from 'src/main/docker'
-    into 'build/docker'
+    into '.'
     rename { String fileName ->
         fileName.replace("-${jar.version}", "")
     }
