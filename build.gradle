@@ -50,8 +50,8 @@ dependencies {
 // via Jenkins plugin
 task copyDockerfile(type: Copy, dependsOn: build) {
     copy {
-        from 'src/main/docker/'
-        into 'build/libs/'
+        from 'src/main/docker'
+        into 'build/libs'
     }
 }
 
