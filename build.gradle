@@ -46,12 +46,12 @@ dependencies {
     testCompile 'commons-io:commons-io:2.5'
 }
 
-// Copies docker files to enable AWS Elastic Beanstalk
-// to create and deploy a docker image.
-task awsEbDockerBuild(type: Copy, dependsOn: build) {
+// Copies docker file to enable build and publish of image
+// via Jenkins plugin
+task copyDockerfile(type: Copy, dependsOn: build) {
     copy {
-        from 'src/main/docker'
-        into 'build/libs'
+        from 'src/main/docker/'
+        into 'build/libs/'
     }
 }
 
