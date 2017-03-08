@@ -46,17 +46,20 @@ dependencies {
     testCompile 'commons-io:commons-io:2.5'
 }
 
-// Copies docker file to enable build and publish of image
+// Copies docker file and jar to enable build and publish of image
 // via Jenkins plugin
-task copyDockerfile(type: Copy, dependsOn: build) {
-    copy {
-        from 'src/main/docker/'
-        into 'build/libs/'
+task copyDockerfile(type: Copy) {
+    dependsOn   'jar'
+    from        "build/libs/${jar.baseName}-${jar.version}.jar"
+    from        'src/main/docker'
+    into        'build/docker'
+    rename { String fileName ->
+        fileName.replace("-${jar.version}", "")
     }
 }
 
 task buildDocker(type: Docker, dependsOn: build) {
-    push = false
+    push = true
     applicationName = jar.baseName
     dockerfile = file('src/main/docker/Dockerfile')
     doFirst {
@@ -65,4 +68,8 @@ task buildDocker(type: Docker, dependsOn: build) {
             into stageDir
         }
     }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4' //version required
 }
